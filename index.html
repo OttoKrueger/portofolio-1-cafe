@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="The Birch & Brew — Specialty coffee, honest food and unhurried mornings in Shoreditch, London." />
+  <title>The Birch &amp; Brew — Specialty Café, Shoreditch</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,300;1,9..144,400;1,9..144,700;1,9..144,900&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet" />
+
+  <!-- Lucide Icons (UMD) -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ============================================================
+       NAVBAR
+  ============================================================ -->
+  <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo" aria-label="The Birch &amp; Brew — home">
+        <span class="logo-mark">B&amp;B</span>
+        <span class="logo-text">The Birch &amp; Brew</span>
+      </a>
+
+      <ul class="nav-links" role="list">
+        <li><a href="#experience" class="nav-link">Experience</a></li>
+        <li><a href="#menu" class="nav-link">Menu</a></li>
+        <li><a href="#story" class="nav-link">Story</a></li>
+        <li><a href="#gallery" class="nav-link">Gallery</a></li>
+        <li><a href="#testimonials" class="nav-link">Reviews</a></li>
+        <li><a href="#reservations" class="nav-link nav-cta">Reserve a Table</a></li>
+      </ul>
+
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileOverlay">
+        <span class="hamburger-label" aria-hidden="true">Menu</span>
+        <div class="hamburger-lines" aria-hidden="true">
+          <span></span>
+          <span></span>
+        </div>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Fullscreen Overlay -->
+  <div class="mobile-overlay" id="mobileOverlay" role="dialog" aria-modal="true" aria-label="Navigation menu">
+
+    <!-- Dedicated close button — visible inside the overlay on mobile -->
+    <button class="mobile-close-btn" id="mobileCloseBtn" aria-label="Close navigation menu">
+      <i data-lucide="x" aria-hidden="true"></i>
+    </button>
+
+    <ul class="mobile-links" role="list">
+      <li><a href="#experience" class="mobile-link">Experience</a></li>
+      <li><a href="#menu" class="mobile-link">Menu</a></li>
+      <li><a href="#story" class="mobile-link">Story</a></li>
+      <li><a href="#gallery" class="mobile-link">Gallery</a></li>
+      <li><a href="#testimonials" class="mobile-link">Reviews</a></li>
+      <li><a href="#reservations" class="mobile-link">Reserve</a></li>
+      <li><a href="#find-us" class="mobile-link">Find Us</a></li>
+    </ul>
+  </div>
+
+
+  <!-- ============================================================
+       HERO
+  ============================================================ -->
+  <section class="hero" id="hero" aria-label="Hero">
+    <div class="hero-content">
+
+      <!-- Left: Editorial text -->
+      <div class="hero-text">
+        <span class="hero-eyebrow">Est. 2019 &nbsp;·&nbsp; Shoreditch, London</span>
+        <h1 class="hero-heading">Where Every<br>Cup Tells<br>a Story</h1>
+        <p class="hero-sub">Specialty coffee, honest food and unhurried mornings in the heart of East London.</p>
+        <div class="hero-actions">
+          <a href="#menu" class="btn btn-primary">Explore the Menu</a>
+          <a href="#story" class="btn btn-ghost">Our Story</a>
+        </div>
+      </div>
+
+      <!-- Right: Full-height image -->
+      <div class="hero-image" aria-hidden="true">
+        <img
+          src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=900&q=80"
+          alt="The Birch &amp; Brew café interior"
+          loading="eager"
+          fetchpriority="high"
+        />
+        <div class="hero-badge">
+          <span>Open Daily</span>
+          <strong>7am - 10pm</strong>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Scroll-triggered animated line -->
+    <div class="hero-line" id="heroLine" aria-hidden="true"></div>
+
+    <!-- Scroll hint -->
+    <div class="hero-scroll-hint" aria-hidden="true">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       SIGNATURE EXPERIENCE
+  ============================================================ -->
+  <section class="experience" id="experience" aria-label="Our signature experience">
+
+    <div class="experience-strip parallax-strip" data-speed="0.25"
+         style="--bg: url('https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=1600&q=80')">
+      <div class="strip-content reveal">
+        <span class="strip-label">01</span>
+        <h2 class="strip-heading">The Coffee</h2>
+        <p class="strip-desc">Single-origin beans, roasted to order. Every brew is a conversation.</p>
+      </div>
+    </div>
+
+    <div class="experience-strip parallax-strip" data-speed="0.2"
+         style="--bg: url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=1600&q=80')">
+      <div class="strip-content reveal">
+        <span class="strip-label">02</span>
+        <h2 class="strip-heading">The Space</h2>
+        <p class="strip-desc">Warm birch wood, morning light and corners made for slow afternoons.</p>
+      </div>
+    </div>
+
+    <div class="experience-strip parallax-strip" data-speed="0.3"
+         style="--bg: url('https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=1600&q=80')">
+      <div class="strip-content reveal">
+        <span class="strip-label">03</span>
+        <h2 class="strip-heading">The Community</h2>
+        <p class="strip-desc">A gathering place for neighbours, creatives and curious minds.</p>
+      </div>
+    </div>
+
+  </section>
+
+
+  <!-- ============================================================
+       MENU
+  ============================================================ -->
+  <section class="menu-section" id="menu" aria-label="Our menu">
+    <div class="menu-header">
+      <span class="section-label reveal">The Menu</span>
+      <h2 class="menu-title reveal">Crafted with<br><em>intention.</em></h2>
+    </div>
+
+    <div class="menu-layout">
+      <!-- Sticky vertical category label -->
+      <div class="menu-sticky-label" id="menuStickyLabel" aria-hidden="true">Coffee</div>
+
+      <div class="menu-body">
+
+        <!-- ---- Coffee ---- -->
+        <div class="menu-category" data-category="Coffee" id="cat-coffee">
+          <div class="category-divider">
+            <span class="category-number">—01</span>
+            <h3 class="category-name">Coffee</h3>
+          </div>
+          <div class="menu-grid">
+            <div class="menu-item">
+              <div class="item-info">
+                <h4>Birch Espresso</h4>
+                <p>A house blend of Ethiopian and Brazilian, yielding dark chocolate and citrus.</p>
+              </div>
+              <span class="item-price">£3.50</span>
+            </div>
+            <div class="menu-item">
+              <div class="item-info">
+                <h4>Flat White</h4>
+                <p>Velvety microfoam over a double ristretto. The purist's choice.</p>
+              </div>
+              <span class="item-price">£4.20</span>
+            </div>
+            <div class="menu-item">
+              <div class="item-info">
+                <h4>Cold Brew</h4>
+                <p>Steeped 18 hours in filtered water. Served over hand-chipped ice.</p>
+              </div>
+              <span class="item-price">£5.00</span>
+            </div>
+            <div class="menu-item">
+              <div class="item-info">
+                <h4>Seasonal Filter</h4>
+                <p>Ask your barista. Single-origin, guest-roasted, always interesting.</p>
+              </div>
+              <span class="item-price">£4.50</span>
+            </div>
+            <div class="menu-item">
+              <div class="item-info">
+                <h4>Oat Cortado</h4>
+                <p>Equal parts espresso and oat milk. Small but mighty.</p>
+              </div>
+              <span class="item-price">£4.00</span>
+            </div>
+            <div class="menu-item">
+              <div class="item-info">
+                <h4>Matcha Latte</h4>
+                <p>Ceremonial-grade Japanese matcha with steamed oat milk.</p>
+              </div>
+              <span class="item-price">£4.80</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ---- Kitchen ---- -->
+        <div class="menu-category" data-category="Kitchen" id="cat-kitchen">
+          <div class="category-divider">
+            <span class="category-number">—02</span>
+            <h3 class="category-name">Kitchen</h3>
+          </div>
+          <div class="menu-grid">
+            <div class="menu-item">
+              <div class="item-info">
+                <h4>Avocado Toast</h4>
+                <p>Sourdough from E5 Bakehouse, smashed avo, dukkah and a poached egg.</p>
+              </div>
+              <span class="item-price">£11.00</span>
+            </div>
+            <div class="menu-item">
+              <div class="item-info">
+                <h4>Birch Eggs</h4>
+                <p>Slow-scrambled eggs, whipped ricotta, chives and toasted rye.</p>
+              </div>
+              <span class="item-price">£12.50</span>
+            </div>
+            <div class="menu-item">
+              <div class="item-info">
+                <h4>Granola Bowl</h4>
+                <p>House granola, seasonal compote, Jude's yoghurt and fresh honey.</p>
+              </div>
+              <span class="item-price">£9.00</span>
+            </div>
+            <div class="menu-item">
+              <div class="item-info">
+                <h4>Smoked Salmon Bagel</h4>
+                <p>Wild smoked salmon, cream cheese, capers and a squeeze of lemon.</p>
+              </div>
+              <span class="item-price">£13.50</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ---- Pastries ---- -->
+        <div class="menu-category" data-category="Pastries" id="cat-pastries">
+          <div class="category-divider">
+            <span class="category-number">—03</span>
+            <h3 class="category-name">Pastries</h3>
+          </div>
+          <div class="menu-grid">
+            <div class="menu-item">
+              <div class="item-info">
+                <h4>Almond Croissant</h4>
+                <p>Twice-baked, frangipane-filled, dusted with icing sugar.</p>
+              </div>
+              <span class="item-price">£4.50</span>
+            </div>
+            <div class="menu-item">
+              <div class="item-info">
+                <h4>Cardamom Bun</h4>
+                <p>Nordic-style, pearled sugar, fragrant and impossibly soft.</p>
+              </div>
+              <span class="item-price">£4.20</span>
+            </div>
+            <div class="menu-item">
+              <div class="item-info">
+                <h4>Banana Bread</h4>
+                <p>With salted caramel butter. A slice of pure comfort.</p>
+              </div>
+              <span class="item-price">£4.00</span>
+            </div>
+            <div class="menu-item">
+              <div class="item-info">
+                <h4>Seasonal Tart</h4>
+                <p>Whatever's best right now. Ask. We love talking about it.</p>
+              </div>
+              <span class="item-price">£5.50</span>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /menu-body -->
+    </div><!-- /menu-layout -->
+  </section>
+
+
+  <!-- ============================================================
+       OUR STORY
+  ============================================================ -->
+  <section class="story" id="story" aria-label="Our story">
+
+    <div class="story-left">
+      <div class="story-text-inner">
+        <span class="section-label reveal">Our Story</span>
+        <blockquote class="story-pullquote reveal">
+          "We didn't open a café.<br>We opened a reason to slow down."
+        </blockquote>
+        <p class="story-body reveal">
+          The Birch &amp; Brew began with a single espresso machine, a rented railway arch and a stubborn belief that London deserved better mornings. Founders Ellie and Tom traded city careers for calloused hands, early starts and the daily ritual of making something worth coming back for.
+        </p>
+        <p class="story-body reveal">
+          Five years on, we're still roasting our own beans, baking our own bread and pouring every cup like it's the first one.
+        </p>
+        <div class="story-signature reveal">Ellie &amp; Tom</div>
+      </div>
+    </div>
+
+    <div class="story-right" aria-hidden="true">
+      <img
+        src="https://images.unsplash.com/photo-1511920170033-f8396924c348?w=900&q=80"
+        alt="Birch &amp; Brew founders at work"
+        loading="lazy"
+      />
+      <div class="story-year">Est.<br>2019</div>
+    </div>
+
+  </section>
+
+
+  <!-- ============================================================
+       GALLERY
+  ============================================================ -->
+  <section class="gallery-section" id="gallery" aria-label="Photo gallery">
+    <div class="gallery-header">
+      <span class="section-label reveal">Gallery</span>
+      <h2 class="reveal">A Glimpse<br><em>Inside.</em></h2>
+    </div>
+
+    <div class="gallery-grid" role="list">
+
+      <div class="gallery-item" data-label="Morning Light" role="listitem" tabindex="0" aria-label="Open photo: Morning Light">
+        <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=600&q=80" alt="Morning coffee" loading="lazy" />
+        <div class="gallery-overlay" aria-hidden="true"><span>Morning Light</span></div>
+      </div>
+
+      <div class="gallery-item" data-label="The Counter" role="listitem" tabindex="0" aria-label="Open photo: The Counter">
+        <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=800&q=80" alt="Coffee bar counter" loading="lazy" />
+        <div class="gallery-overlay" aria-hidden="true"><span>The Counter</span></div>
+      </div>
+
+      <div class="gallery-item" data-label="Latte Art" role="listitem" tabindex="0" aria-label="Open photo: Latte Art">
+        <img src="https://images.unsplash.com/photo-1534040385115-33dcb3acba5b?w=600&q=80" alt="Latte art close-up" loading="lazy" />
+        <div class="gallery-overlay" aria-hidden="true"><span>Latte Art</span></div>
+      </div>
+
+      <div class="gallery-item" data-label="Pastry Hour" role="listitem" tabindex="0" aria-label="Open photo: Pastry Hour">
+        <img src="https://images.unsplash.com/photo-1517433670267-08bbd4be890f?w=600&q=80" alt="Fresh pastries" loading="lazy" />
+        <div class="gallery-overlay" aria-hidden="true"><span>Pastry Hour</span></div>
+      </div>
+
+      <div class="gallery-item" data-label="The Space" role="listitem" tabindex="0" aria-label="Open photo: The Space">
+        <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=600&q=80" alt="Café interior" loading="lazy" />
+        <div class="gallery-overlay" aria-hidden="true"><span>The Space</span></div>
+      </div>
+
+      <div class="gallery-item" data-label="Community Table" role="listitem" tabindex="0" aria-label="Open photo: Community Table">
+        <img src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?w=800&q=80" alt="Community table" loading="lazy" />
+        <div class="gallery-overlay" aria-hidden="true"><span>Community Table</span></div>
+      </div>
+
+      <div class="gallery-item" data-label="Roast Day" role="listitem" tabindex="0" aria-label="Open photo: Roast Day">
+        <img src="https://images.unsplash.com/photo-1448354494881-a37a6a04f1a7?w=600&q=80" alt="Coffee bean roasting" loading="lazy" />
+        <div class="gallery-overlay" aria-hidden="true"><span>Roast Day</span></div>
+      </div>
+
+    </div>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
+      <button class="lightbox-close" id="lightboxClose" aria-label="Close photo viewer">&#x2715;</button>
+      <img src="" alt="" id="lightboxImg" />
+      <span class="lightbox-caption" id="lightboxCaption"></span>
+    </div>
+
+  </section>
+
+
+  <!-- ============================================================
+       TESTIMONIALS
+  ============================================================ -->
+  <section class="testimonials" id="testimonials" aria-label="Customer reviews">
+    <div class="testimonials-inner">
+
+      <div class="testimonial-track" id="testimonialTrack" aria-live="polite">
+
+        <div class="testimonial-slide active" role="group" aria-label="Review 1 of 4">
+          <blockquote>"The best flat white I've had outside of Melbourne. And the banana bread? Criminal."</blockquote>
+          <div class="testimonial-author">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80" alt="Sarah M." loading="lazy" />
+            <div>
+              <strong>Sarah M.</strong>
+              <span>Hackney</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-slide" role="group" aria-label="Review 2 of 4">
+          <blockquote>"I write here every Tuesday. The staff know my order. The light is perfect. I don't need anything else."</blockquote>
+          <div class="testimonial-author">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt="James T." loading="lazy" />
+            <div>
+              <strong>James T.</strong>
+              <span>Bethnal Green</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-slide" role="group" aria-label="Review 3 of 4">
+          <blockquote>"It's rare to find a place where the coffee matches the atmosphere. Birch &amp; Brew nails both, every single time."</blockquote>
+          <div class="testimonial-author">
+            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80" alt="Priya K." loading="lazy" />
+            <div>
+              <strong>Priya K.</strong>
+              <span>Islington</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-slide" role="group" aria-label="Review 4 of 4">
+          <blockquote>"My dad — a lifelong Nescafé man — ordered a second espresso. That's the review."</blockquote>
+          <div class="testimonial-author">
+            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=80" alt="Marcus L." loading="lazy" />
+            <div>
+              <strong>Marcus L.</strong>
+              <span>Stratford</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="testimonial-dots" id="testimonialDots" role="tablist" aria-label="Select review"></div>
+
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       RESERVATIONS
+  ============================================================ -->
+  <section class="reservations" id="reservations" aria-label="Make a reservation">
+    <div class="reservations-inner">
+
+      <div class="reservations-header">
+        <span class="section-label light reveal">Reserve a Table</span>
+        <h2 class="reservations-title reveal">Join Us for<br><em>Something Good.</em></h2>
+        <p class="reservations-sub reveal">We hold tables for up to 8 guests. For larger parties, give us a call.</p>
+      </div>
+
+      <form class="reservation-form" id="reservationForm" novalidate aria-label="Reservation form">
+
+        <div class="form-row">
+          <div class="form-group">
+            <input type="text" id="resName" name="name" placeholder=" " required autocomplete="name" />
+            <label for="resName">Full Name</label>
+            <span class="field-error" id="nameError" role="alert"></span>
+          </div>
+          <div class="form-group">
+            <input type="email" id="resEmail" name="email" placeholder=" " required autocomplete="email" />
+            <label for="resEmail">Email Address</label>
+            <span class="field-error" id="emailError" role="alert"></span>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <input type="date" id="resDate" name="date" required />
+            <label for="resDate">Date</label>
+            <span class="field-error" id="dateError" role="alert"></span>
+          </div>
+          <div class="form-group">
+            <input type="time" id="resTime" name="time" required />
+            <label for="resTime">Time</label>
+            <span class="field-error" id="timeError" role="alert"></span>
+          </div>
+        </div>
+
+        <div class="form-row form-row-single">
+          <div class="form-group">
+            <select id="resGuests" name="guests" required>
+              <option value="" disabled selected hidden></option>
+              <option value="1">1 guest</option>
+              <option value="2">2 guests</option>
+              <option value="3">3 guests</option>
+              <option value="4">4 guests</option>
+              <option value="5">5 guests</option>
+              <option value="6">6 guests</option>
+              <option value="7">7 guests</option>
+              <option value="8">8 guests</option>
+            </select>
+            <label for="resGuests">Number of Guests</label>
+            <span class="field-error" id="guestsError" role="alert"></span>
+          </div>
+        </div>
+
+        <div class="form-group form-full">
+          <textarea id="resRequests" name="requests" placeholder=" " rows="2"></textarea>
+          <label for="resRequests">Special Requests (optional)</label>
+        </div>
+
+        <button type="submit" class="btn btn-submit">Reserve My Table</button>
+
+      </form>
+
+      <!-- Success state — hidden by default -->
+      <div class="reservation-success" id="reservationSuccess" aria-live="polite" aria-hidden="true">
+        <div class="success-icon" aria-hidden="true">&#10003;</div>
+        <h3>Your table is waiting.</h3>
+        <p>We've sent a confirmation to your email. We can't wait to see you.</p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       FIND US
+  ============================================================ -->
+  <section class="find-us" id="find-us" aria-label="Location and opening hours">
+
+    <div class="find-us-left">
+      <span class="section-label reveal">Find Us</span>
+
+      <div class="hours-display reveal">
+        <div class="hours-row">
+          <span class="hours-day">Mon — Fri</span>
+          <span class="hours-time">7:00 — 18:00</span>
+        </div>
+        <div class="hours-row">
+          <span class="hours-day">Saturday</span>
+          <span class="hours-time">8:00 — 20:00</span>
+        </div>
+        <div class="hours-row">
+          <span class="hours-day">Sunday</span>
+          <span class="hours-time">9:00 — 17:00</span>
+        </div>
+      </div>
+
+      <address class="contact-details reveal">
+        <div class="contact-item">
+          <i data-lucide="map-pin" aria-hidden="true"></i>
+          <span>47 Redchurch Street, Shoreditch, London E2 7DJ</span>
+        </div>
+        <div class="contact-item">
+          <i data-lucide="phone" aria-hidden="true"></i>
+          <a href="tel:+442079460321">+44 (0)20 7946 0321</a>
+        </div>
+        <div class="contact-item">
+          <i data-lucide="mail" aria-hidden="true"></i>
+          <a href="mailto:hello@birchandbrew.co.uk">hello@birchandbrew.co.uk</a>
+        </div>
+        <div class="contact-item">
+          <i data-lucide="instagram" aria-hidden="true"></i>
+          <a href="#" aria-label="Follow us on Instagram">@birchandbrew</a>
+        </div>
+      </address>
+    </div>
+
+    <div class="find-us-right" aria-label="Map">
+      <div class="map-wrapper">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2482.488302819266!2d-0.07535698422966057!3d51.52279647963777!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48761cb5a2caf4cd%3A0x5f9a8b24b8f85d4e!2sRedchurch+St%2C+London!5e0!3m2!1sen!2suk!4v1680000000000!5m2!1sen!2suk"
+          width="100%"
+          height="100%"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="The Birch &amp; Brew — 47 Redchurch Street, Shoreditch">
+        </iframe>
+      </div>
+    </div>
+
+  </section>
+
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer class="footer" role="contentinfo">
+    <!-- Watermark background text -->
+    <div class="footer-watermark" aria-hidden="true">Birch &amp; Brew</div>
+
+    <div class="footer-inner">
+      <div class="footer-top">
+
+        <div class="footer-brand">
+          <span class="footer-logo">The Birch &amp; Brew</span>
+          <p class="footer-tagline">Coffee. Community. Craft.</p>
+        </div>
+
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <a href="#experience">Experience</a>
+          <a href="#menu">Menu</a>
+          <a href="#story">Story</a>
+          <a href="#gallery">Gallery</a>
+          <a href="#reservations">Reserve</a>
+          <a href="#find-us">Find Us</a>
+        </nav>
+
+        <div class="footer-social">
+          <a href="#" aria-label="Instagram">
+            <i data-lucide="instagram" aria-hidden="true"></i>
+          </a>
+          <a href="#" aria-label="Twitter / X">
+            <i data-lucide="twitter" aria-hidden="true"></i>
+          </a>
+          <a href="#" aria-label="Facebook">
+            <i data-lucide="facebook" aria-hidden="true"></i>
+          </a>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 The Birch &amp; Brew. All rights reserved.</p>
+        <p>Crafted with care in Shoreditch, London.</p>
+      </div>
+
+      <!-- Studio credit — subtle and elegant -->
+      <p class="footer-credit">
+        Crafted by <a href="https://okwebstart.com" target="_blank" rel="noopener noreferrer">OK WebStart</a>
+      </p>
+    </div>
+  </footer>
+
+
+  <script src="script.js"></script>
+</body>
+</html>
