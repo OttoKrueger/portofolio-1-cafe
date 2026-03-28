@@ -257,6 +257,9 @@ address { font-style: normal; }
 .mobile-overlay {
   position: fixed;
   inset: 0;
+  /* Respect iOS safe areas so content doesn't hide behind notch/home bar */
+  padding-top: env(safe-area-inset-top, 0);
+  padding-bottom: env(safe-area-inset-bottom, 0);
   background: var(--black);
   z-index: 980;
   display: flex;
@@ -446,10 +449,8 @@ address { font-style: normal; }
   overflow: hidden;
   background-image: var(--bg);
   background-size: cover;
-  background-position: center;
-  background-attachment: fixed; /* parallax on desktop; mobile overrides to scroll below */
-  /* Hint to the browser to promote each strip to its own compositor layer,
-     so background-position updates don't trigger main-thread repaints */
+  background-position: center 50%;
+  background-attachment: fixed;
   will-change: background-position;
 }
 .experience-strip::before {
@@ -744,6 +745,20 @@ address { font-style: normal; }
 }
 .gallery-item:hover .gallery-overlay,
 .gallery-item:focus .gallery-overlay { opacity: 1; }
+
+/* On touch devices, overlay captions are always visible (hover doesn't fire) */
+@media (hover: none) {
+  .gallery-overlay {
+    opacity: 1;
+    background: linear-gradient(
+      to top,
+      rgba(13, 13, 13, 0.82) 0%,
+      rgba(13, 13, 13, 0.25) 45%,
+      transparent 100%
+    );
+  }
+  .gallery-overlay span { font-size: 0.85rem; }
+}
 .gallery-overlay span {
   font-family: var(--font-head);
   font-size: 1.3rem;
@@ -793,7 +808,13 @@ address { font-style: normal; }
   cursor: pointer;
   line-height: 1;
   transition: color var(--trans), transform var(--trans);
-  padding: 0.5rem;
+  /* Minimum 44×44px tap target */
+  padding: 0.75rem;
+  min-width: 44px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .lightbox-close:hover { color: var(--orange); transform: rotate(90deg); }
 
@@ -1161,6 +1182,7 @@ input[type="time"] { color-scheme: dark; }
 .footer {
   background: var(--black);
   padding: var(--sp-xl) clamp(1.5rem, 6vw, 6rem) var(--sp-md);
+  padding-bottom: calc(var(--sp-md) + env(safe-area-inset-bottom, 0px));
   position: relative;
   overflow: hidden;
 }
@@ -1338,14 +1360,19 @@ input[type="time"] { color-scheme: dark; }
   /* Hero — stack vertically */
   .hero-content {
     grid-template-columns: 1fr;
-    grid-template-rows: auto 45vh;
+    grid-template-rows: auto minmax(45vh, 50vh);
   }
   .hero-text {
     order: 1;
     padding: calc(var(--nav-h) + 2rem) 1.5rem 2.5rem;
+    min-height: 0; /* let grid control it */
   }
-  .hero-image { order: 2; height: 45vh; }
-  .hero-image img { height: 100%; }
+  .hero-image {
+    order: 2;
+    height: auto; /* let row sizing control it */
+    min-height: 260px;
+  }
+  .hero-image img { width: 100%; height: 100%; object-fit: cover; }
   .hero-badge { left: 0; bottom: var(--sp-sm); }
   .hero-actions {
     flex-direction: column;
@@ -1359,20 +1386,24 @@ input[type="time"] { color-scheme: dark; }
   }
   .hero-scroll-hint { display: none; }
 
-  /* Experience — disable fixed parallax (iOS ignores it anyway).
-     Replace the directional desktop gradient with a full-coverage tint
-     so text stays readable on any image regardless of alignment. */
+  /* Experience — reduce height on mobile, replace directional gradient
+     with a full-coverage tint so text stays readable on any image.
+     background-attachment: fixed is broken on iOS Safari, so we switch
+     to scroll here and let the JS simulate the parallax via backgroundPositionY. */
   .experience-strip {
-    background-attachment: scroll;
     height: 52vh;
     min-height: 300px;
+    background-attachment: scroll;
   }
   .experience-strip::before {
-    background: rgba(13, 13, 13, 0.55);
+    background: rgba(13, 13, 13, 0.62);
   }
+  /* Override padding clamp to a fixed value on mobile for consistency */
+  .experience-strip .strip-content { padding: 0 1.5rem; }
 
   /* Menu */
   .menu-layout { grid-template-columns: 1fr; padding: 0 1.5rem; }
+  .menu-header { padding: 0 1.5rem; margin-bottom: var(--sp-lg); }
   .menu-sticky-label { display: none; }
   .menu-body { border-left: none; padding-left: 0; }
   .menu-grid { grid-template-columns: 1fr; }
@@ -1383,14 +1414,14 @@ input[type="time"] { color-scheme: dark; }
     min-height: auto;
   }
   .story-left { padding: var(--sp-xl) 1.5rem; }
-  .story-right { height: 50vh; }
+  .story-right { height: 50vh; min-height: 260px; }
 
   /* Gallery — always show overlay labels on touch devices
      (hover doesn't fire on touch, so the label would never appear) */
   .gallery-section { padding: var(--sp-xl) 0.75rem; }
   .gallery-grid {
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: repeat(5, 170px);
+    grid-template-rows: repeat(5, 185px);
   }
   .gallery-item:nth-child(1) { grid-column: 1;     grid-row: 1 / 3; }
   .gallery-item:nth-child(2) { grid-column: 2;     grid-row: 1;     }
@@ -1413,7 +1444,7 @@ input[type="time"] { color-scheme: dark; }
   .gallery-overlay span { font-size: 0.8rem; }
 
   /* Testimonials — increase track height so long quotes don't clip */
-  .testimonial-track { min-height: 380px; }
+  .testimonial-track { min-height: 420px; }
 
   /* Dots — extend invisible hit area with ::before pseudo-element
      so each dot has a ≥44px tap target without changing its visual size */
@@ -1430,13 +1461,15 @@ input[type="time"] { color-scheme: dark; }
   .testimonial-dots { gap: 0.75rem; }
 
   /* Reservations */
+  .reservations { padding: var(--sp-xl) 1.5rem; }
   .form-row { grid-template-columns: 1fr; }
   .btn-submit { width: 100%; justify-content: center; }
 
   /* Find Us */
   .find-us { grid-template-columns: 1fr; }
   .find-us-left { padding: var(--sp-xl) 1.5rem; }
-  .find-us-right { height: 320px; }
+  .find-us-right { height: 360px; min-height: 300px; }
+  .map-wrapper { min-height: 300px; }
 
   /* Contact details — add vertical padding for comfortable tapping */
   .contact-details { gap: 0; }
@@ -1460,12 +1493,73 @@ input[type="time"] { color-scheme: dark; }
   .gallery-header h2,
   .story-pullquote { font-size: 2.4rem; }
 
-  .strip-heading { font-size: 2.8rem; }
+  .strip-heading { font-size: 2.6rem; }
   .category-name { font-size: 2.4rem; }
 
+  /* Gallery — slightly smaller rows to fit more of the grid on screen */
+  .gallery-grid { grid-template-rows: repeat(5, 165px); }
+
+  /* Story image — ensure a decent minimum on small screens */
+  .story-right { height: 45vh; min-height: 220px; }
+
   /* Testimonial track — taller on smallest screens for multi-line quotes */
-  .testimonial-track { min-height: 440px; }
+  .testimonial-track { min-height: 460px; }
 
   /* Mobile close button nudges to align with the safe area on notched phones */
   .mobile-close-btn { top: 1.5rem; right: 1.5rem; }
+}
+
+
+/* ================================================================
+   RESPONSIVE — EXTRA SMALL MOBILE (≤ 375px)
+   Covers older iPhones (SE 1st gen), narrow Android devices
+================================================================ */
+@media (max-width: 375px) {
+  :root {
+    --sp-md: 1.5rem;
+  }
+
+  /* Scale down large headings further */
+  .hero-heading,
+  .menu-title,
+  .reservations-title,
+  .gallery-header h2 { font-size: 2rem; }
+
+  .strip-heading   { font-size: 2.2rem; }
+  .category-name   { font-size: 2rem; }
+  .story-pullquote { font-size: 1.3rem; }
+
+  /* Tighter hero text panel */
+  .hero-text {
+    padding-top: calc(var(--nav-h) + 1.25rem);
+    padding-bottom: 2rem;
+  }
+
+  /* Hero image — keep it proportional on very small screens */
+  .hero-image { min-height: 220px; }
+
+  /* Gallery — tighter rows */
+  .gallery-grid { grid-template-rows: repeat(5, 148px); }
+
+  /* Testimonial quote text */
+  .testimonial-slide blockquote {
+    font-size: 1.25rem;
+    line-height: 1.4;
+  }
+  .testimonial-track { min-height: 500px; }
+
+  /* Story image — shorter on small screens so it doesn't dominate */
+  .story-right { height: 40vh; min-height: 190px; }
+
+  /* Experience strip — clip very long headings */
+  .strip-heading { overflow-wrap: break-word; }
+
+  /* Reservation form — tighter padding */
+  .reservations { padding: var(--sp-xl) 1.25rem; }
+
+  /* Find us map — slightly shorter */
+  .find-us-right { height: 300px; }
+
+  /* Footer bottom text wraps on tiny screens */
+  .footer-bottom { font-size: 0.68rem; }
 }
